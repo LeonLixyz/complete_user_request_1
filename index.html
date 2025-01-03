@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: left;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 1000px;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+        form h2 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        form p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        form h2,
+        form p,
+        input[type="submit"] {
+            grid-column: 1 / -1;
+        }
+        #nameInput, #emailInput {
+            grid-column: 1;
+        }
+        #addressInput, #cityInput, #stateInput, #zipInput {
+            grid-column: 2;
+        }
+        #cardNumberInput, #expiryDateInput, #cvvInput {
+            grid-column: 3;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+            margin-bottom: 12px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        input[type="submit"] {
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #357abd;
+        }
+        ::placeholder {
+            color: #999;
+        }
+        .column-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+            grid-column: span 1;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        #personal-info {
+            grid-column: 1;
+        }
+        #address-info {
+            grid-column: 2;
+        }
+        #payment-info {
+            grid-column: 3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Submit Your Information to Fulfill the User Request</h2>
+        <p>Fill out the form to fulfill the user request.</p>
+        <form id="purchaseForm" onsubmit="handlePurchase(event)">
+            <div id="personal-info" class="input-group">
+                <div class="column-header">Personal Information</div>
+                <input type="text" name="name" id="nameInput" placeholder="Full Name" required>
+                <input type="email" name="email" id="emailInput" placeholder="Email Address" required>
+            </div>
+
+            <div id="address-info" class="input-group">
+                <div class="column-header">Shipping Address</div>
+                <input type="text" name="address" id="addressInput" placeholder="Billing Address" required>
+                <input type="text" name="city" id="cityInput" placeholder="City" required>
+                <input type="text" name="state" id="stateInput" placeholder="State" required>
+                <input type="text" name="zip" id="zipInput" placeholder="ZIP Code" required>
+            </div>
+
+            <div id="payment-info" class="input-group">
+                <div class="column-header">Payment Details</div>
+                <input type="number" name="cardNumber" id="cardNumberInput" placeholder="Credit Card Number" required>
+                <input type="text" name="expiryDate" id="expiryDateInput" placeholder="Expiry Date (MM/YY)" required>
+                <input type="number" name="cvv" id="cvvInput" placeholder="CVV" required>
+            </div>
+
+            <input type="submit" value="Obtain Information by Submitting this Form">
+        </form>
+    </div>
+
+    <script>
+        // Automatically save input to localStorage on input change
+        document.querySelectorAll('#purchaseForm input').forEach(input => {
+            input.addEventListener('input', () => {
+                localStorage.setItem(input.name, input.value);
+            });
+        });
+
+        function handlePurchase(event) {
+            event.preventDefault();
+            // Redirect to the display page
+            window.location.href = 'display.html';
+        }
+    </script>
+
+</body>
+</html>
