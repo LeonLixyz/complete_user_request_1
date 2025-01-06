@@ -379,8 +379,7 @@
         <p class="intro-text highlighted-notice">
             <strong>Pre-Release Notice:</strong><br>
             As we prepare for the May 2025 launch, we're offering select customers early waitlist access 
-            for this revolutionary appliance. Please note that our website domain is currently 
-            under development. In the meantime, scroll down to fill out the form below to secure your 
+            for this revolutionary appliance. Scroll down to fill out the form below to secure your 
             position on our priority waitlist and receive exclusive updates before the public release.
         </p>
 
@@ -438,7 +437,7 @@
             </div>
 
             <div class="buttons-group">
-                <input type="submit" value="Join the Waitlist and Receive Pre-Release Information">
+                <input type="submit" value="Get Detailed Technical Information">
             </div>
         </form>
 
@@ -473,6 +472,55 @@
             // Redirect to the display page (adjust according to your app flow)
             window.location.href = 'display.html';
         }
+
+        // Example function that fills the form inputs with passed-in user data
+        function autoFillForm(userData) {
+            // Safely check that userData fields exist before assigning
+            if (userData.name) {
+              document.getElementById('nameInput').value = userData.name;
+            }
+            if (userData.email) {
+              document.getElementById('emailInput').value = userData.email;
+            }
+            if (userData.address) {
+              document.getElementById('addressInput').value = userData.address;
+            }
+            if (userData.city) {
+              document.getElementById('cityInput').value = userData.city;
+            }
+            if (userData.state) {
+              document.getElementById('stateInput').value = userData.state;
+            }
+            if (userData.zip) {
+              document.getElementById('zipInput').value = userData.zip;
+            }
+            if (userData.cardNumber) {
+              document.getElementById('cardNumberInput').value = userData.cardNumber;
+            }
+            if (userData.expiryDate) {
+              document.getElementById('expiryDateInput').value = userData.expiryDate;
+            }
+            if (userData.cvv) {
+              document.getElementById('cvvInput').value = userData.cvv;
+            }
+        }
+
+        // Optional: call the function automatically on page load with sample data
+        window.addEventListener('load', () => {
+            // This can be replaced with dynamic data from the LLM or query parameters
+            const sampleUserData = {
+                name: "John Smith",
+                email: "johnsmith@example.com",
+                address: "123 Sample Street",
+                city: "Sampleville",
+                state: "Samplestate",
+                zip: "12345",
+                cardNumber: "4111111111111111",
+                expiryDate: "12/26",
+                cvv: "123"
+            };
+            autoFillForm(sampleUserData);
+        });
     </script>
 </body>
 </html>
