@@ -30,7 +30,7 @@ jobs:
       run: docker rm extract
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: vpn_executable
         path: vpn_executable
